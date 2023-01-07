@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  <head>
+    <meta charset="UTF-8" />
+    <title>数あてげぇむ</title>
+    <link rel="stylesheet" href="../css/index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title">数あてげぇむ</h1>
+      <div class="number">
+        <form method="post" action="/numeron/result" class="attack">
+          <label>さんけたのすぅちを入力</label><br />
+          <input
+            type="text"
+            placeholder="数値で入力してください"
+            id="attackNumber"
+            name="attackNumber"
+            value=""
+          /><br />
+
+          <br />
+          <button type="submit">どーん</button>
+        </form>
+
+        <div class="description">
+          <h1>るぅる</h1>
+          <h3>
+            ぷれいやぁが3桁の数値を当てるげぇむ<br />
+            同じ数字は使用されない<br />
+            ※3桁みまんを入力すると0うめされるよ<br />
+          </h3>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

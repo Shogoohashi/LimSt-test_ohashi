@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Calc CompoundInterest Ex Home</title>
+    <link rel="stylesheet" href="../css/index.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="content">
+        <div class="content-header">
+          <h1>複利計算EX</h1>
+        </div>
+        <div class="content-main">
+          <form method="post" action="/compoundInterestEx/result">
+            <div class="form-box">
+              <label>元金( 例.最初に持っているお金:300万円 ): </label>
+              <input
+                type="text"
+                placeholder="数値で入力してください"
+                id="principal"
+                name="principal"
+                value="0"
+              />万円
+            </div>
+            <div class="form-box">
+              <label>金利( 例.1年あたりの利率:1.5% ): </label>
+              <input
+                type="text"
+                placeholder="数値で入力してください"
+                id="rate"
+                name="rate"
+                value="0.0"
+              />％
+            </div>
+            <div class="form-box">
+              <label>経過年数( 例.金利を計算する年数:10年 ): </label>
+              <input
+                type="text"
+                placeholder="数値で入力してください"
+                id="years"
+                name="years"
+                value="0"
+              />年
+            </div>
+            <div class="form-box">
+              <label>目標金額: </label>
+              <input
+                type="text"
+                placeholder="数値で入力してください"
+                id="targetPrice"
+                name="targetPrice"
+                value="0"
+              />万円
+            </div>
+            <button class="content-btn" type="submit">計算</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

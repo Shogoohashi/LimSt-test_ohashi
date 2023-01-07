@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"></meta>
+	<title>電卓</title>
+	<link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+	<h1 class="page-title">電卓</h1>
+	<div class="overview">
+		<p>このアプリケーションでは以下の計算が可能です</p>
+		<div>
+			<span>足し算</span>
+		</div>
+		<div>
+			<span>引き算</span>
+		</div>
+		<div>
+			<span>掛け算</span>
+		</div>
+		<div>
+			<span>割り算</span>
+		</div>
+		<br/>
+	</div>
+	<div class="form">
+		<form method="post" action="/calculator/result">
+			<label>一つ目の値</label><br />
+			<input type="text" placeholder="数値で入力してください" id="firstNum" name="firstNum" value="0.0"/><br/>
+			
+			<br/>
+			<label>二つ目の値</label><br />
+			<input type="text" placeholder="数値で入力してください" id="secondNum" name="secondNum" value="0.0"/><br/>
+			
+			<br/>
+
+			<span>計算方法を下記より選択してください</span>
+			<div >
+				<input type="radio" value="add" id="calcType1" name="calcType">+</input>
+			</div>
+			<div >
+				<input type="radio" value="sub" id="calcType2" name="calcType">-</input>
+			</div>
+			<div >
+				<input type="radio" value="mul" id="calcType3" name="calcType">×</input>
+			</div>
+			<div >
+				<input type="radio" value="div" id="calcType4" name="calcType">÷</input>
+			</div>
+			
+			<br/>
+			<input type="submit" value="計算" id="submit"><br/>
+			<br/>
+		</form>
+		
+	</div>
+</body>
+</html>

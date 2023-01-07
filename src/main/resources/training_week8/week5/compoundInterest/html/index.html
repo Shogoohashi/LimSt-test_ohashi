@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  <head>
+    <meta charset="UTF-8" />
+    <title>複利計算</title>
+    <link rel="stylesheet" href="../css/index.css" />
+  </head>
+  <body>
+    <h1 class="title">複利計算ツール</h1>
+    <div class="calc">
+      <form method="post" action="/compoundInterest/result">
+        <label>元金( 例.最初に持っているお金:300万円 )</label><br />
+        <input
+          type="text"
+          placeholder="数値で入力してください"
+          id="principal"
+          name="principal"
+          value="0"
+        />万円<br />
+
+        <br />
+        <label>金利( 例.1年あたりの利率:1.5% )</label><br />
+        <input
+          type="text"
+          placeholder="数値で入力してください"
+          id="rate"
+          name="rate"
+          value="0.0"
+        />％<br />
+
+        <br />
+        <label>経過年数( 例.金利を計算する年数:10年 )</label><br />
+        <input
+          type="text"
+          placeholder="数値で入力してください"
+          id="years"
+          name="years"
+          value="0"
+        />年<br />
+
+        <br />
+        <button type="submit">計算</button>
+      </form>
+    </div>
+  </body>
+</html>
