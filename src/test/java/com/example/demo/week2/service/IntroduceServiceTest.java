@@ -1,8 +1,9 @@
 package com.example.demo.week2.service;
 
+import static org.junit.Assert.assertEquals;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+
 
 class IntroduceServiceTest {
 
@@ -19,6 +20,6 @@ class IntroduceServiceTest {
     void getComment() {
         String expected = "Dream Junkie";
         String actual = service.getComment();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 }
