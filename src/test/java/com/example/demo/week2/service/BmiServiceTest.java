@@ -9,7 +9,7 @@ class BmiServiceTest {
 
     @Test
     void getBmiCalcResult() {
-        double expected = 56 / (1.76 * 1.76);
+        double expected = 18.078512396694215;
         double actual = service.getBmiCalcResult(1.76,56);
         assertEquals(expected, actual);
     }
