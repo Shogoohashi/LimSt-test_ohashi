@@ -1,23 +1,30 @@
 package com.example.demo.week3.service;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
 class OmikujiServiceTest {
 
     OmikujiService service = new OmikujiService();
 
     @Test
-    void getResult() {
-        String actual = service.getResult();
-        assertThat("大吉中吉小吉凶", is(containsString(actual)));
+    void 凶の結果() {
+        assertEquals("凶",service.getResult());
+    }
 
+    @Test
+    void 小吉の結果() {
+        assertEquals("小吉",service.getResult());
+    }
+
+    @Test
+    void 中吉の結果() {
+        assertEquals("中吉",service.getResult());
+    }
+
+    @Test
+    void 大吉の結果() {
+        assertEquals("大吉",service.getResult());
     }
 
     @Test
