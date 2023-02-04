@@ -1,31 +1,78 @@
 package com.example.demo.week3.service;
 
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
+
 class SazaeServiceTest {
 
 
     SazaeService service = new SazaeService();
 
-    @Test
-    void 出した手がグーの場合のテスト() {
-        assertThat(service.janken("goo","goo"), is("draw"));
-        assertThat(service.janken("goo","choki"), is("win"));
-        assertThat(service.janken("goo","per"), is("lose"));
+    @ParameterizedTest
+    @CsvSource({"draw", "win", "lose"})
+    void 自分が出した手がグーの場合に勝つテスト(String expected) {
+        String actual1 = service.janken("goo", "choki");
+        assertEquals(actual1, expected);
     }
 
-    @Test
-    void 出した手がパーの場合のテスト() {
-        assertThat(service.janken("per","goo"), is("win"));
-        assertThat(service.janken("per","choki"), is("lose"));
-        assertThat(service.janken("per","per"), is("draw"));
+    @ParameterizedTest
+    @CsvSource({"draw", "win", "lose"})
+    void 自分が出した手がチョキの場合に勝つテスト(String expected) {
+        String actual1 = service.janken("choki", "per");
+        assertEquals(actual1, expected);
     }
 
-    @Test
-    void 出した手がチョキの場合のテスト() {
-        assertThat(service.janken("choki","goo"), is("lose"));
-        assertThat(service.janken("choki","choki"), is("draw"));
-        assertThat(service.janken("choki","per"), is("win"));
+    @ParameterizedTest
+    @CsvSource({"draw", "win", "lose"})
+    void 自分が出した手がパーの場合に勝つテスト(String expected) {
+        String actual1 = service.janken("per", "goo");
+        assertEquals(actual1, expected);
     }
+
+    @ParameterizedTest
+    @CsvSource({"draw", "win", "lose"})
+    void 自分が出した手がグーの場合に負けるテスト(String expected) {
+        String actual1 = service.janken("goo", "per");
+        assertEquals(actual1, expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"draw", "win", "lose"})
+    void 自分が出した手がチョキの場合に負けるテスト(String expected) {
+        String actual1 = service.janken("choki", "goo");
+        assertEquals(actual1, expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"draw", "win", "lose"})
+    void 自分が出した手がパーの場合に負けるテスト(String expected) {
+        String actual1 = service.janken("per", "choki");
+        assertEquals(actual1, expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"draw", "win", "lose"})
+    void 自分が出した手がグーの場合に引き分けるテスト(String expected) {
+        String actual1 = service.janken("goo", "goo");
+        assertEquals(actual1, expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"draw", "win", "lose"})
+    void 自分が出した手がチョキの場合に引き分けるテスト(String expected) {
+        String actual1 = service.janken("choki", "choki");
+        assertEquals(actual1, expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"draw", "win", "lose"})
+    void 自分が出した手がパーの場合に引き分けるテスト(String expected) {
+        String actual1 = service.janken("per", "per");
+        assertEquals(actual1, expected);
+    }
+
 }
