@@ -2,30 +2,32 @@ package com.example.demo.week3.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class OmikujiServiceTest {
 
     OmikujiService service = new OmikujiService();
 
-    @Test
-    void 凶の結果() {
-        assertEquals("凶",service.getResult());
+    @ParameterizedTest
+    @ValueSource(strings = {"凶", "小吉", "中吉", "大吉"})
+    void おみくじ結果(String s) {
+        String actual = service.getResult();
+        String expected = "";
+        if (actual.equals("大吉")) {
+            expected = s;
+        }else if(actual.equals("中吉")) {
+            expected = s;
+        }else if(actual.equals("小吉")) {
+            expected = s;
+        }else if(actual.equals("小吉")) {
+            expected = s;
+        }else {
+            expected = s;
+        }
+            assertEquals(actual, expected);
     }
 
-    @Test
-    void 小吉の結果() {
-        assertEquals("小吉",service.getResult());
-    }
-
-    @Test
-    void 中吉の結果() {
-        assertEquals("中吉",service.getResult());
-    }
-
-    @Test
-    void 大吉の結果() {
-        assertEquals("大吉",service.getResult());
-    }
 
     @Test
     void 凶の際のコメント() {
