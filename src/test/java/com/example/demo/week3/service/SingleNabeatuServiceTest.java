@@ -1,30 +1,36 @@
 package com.example.demo.week3.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class SingleNabeatuServiceTest {
 
 
     SingleNabeatuService service = new SingleNabeatuService();
 
-    @Test
-    @DisplayName("0だとエラーになる")
-    void isAhoNumber1() {
-        assertThat(service.isAhoNumber(0), is(false));
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9})
+    @DisplayName("3の倍数だとtrue")
+    void isAhoNumber1(int Number) {
+        boolean expected = true;
+        if (Number % 3 == 0) {
+            expected = false;
+        }
+        boolean actual = service.isAhoNumber(0);
+        assertEquals(actual, expected);
     }
 
-    @Test
-    @DisplayName("３の倍数だとtrue")
-    void isAhoNumber2() {
-        assertThat(service.isAhoNumber(15), is(true));
-    }
-
-    @Test
-    @DisplayName("3の倍数以外だとエラーになる")
-    void isAhoNumber3() {
-        assertThat(service.isAhoNumber(2), is(false));
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9})
+    @DisplayName("3の倍数でない数値はtrue")
+    void isAhoNumber2(int Number) {
+        boolean expected = true;
+        if (Number % 3 >= 1) {
+            expected = false;
+        }
+        boolean actual = service.isAhoNumber(0);
+        assertEquals(actual, expected);
     }
 }
