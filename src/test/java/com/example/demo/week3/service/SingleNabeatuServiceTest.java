@@ -16,9 +16,9 @@ class SingleNabeatuServiceTest {
     void isAhoNumber1(int Number) {
         boolean expected = true;
         if (Number % 3 == 0) {
-            expected = false;
+            expected = true;
         }
-        boolean actual = service.isAhoNumber(0);
+        boolean actual = service.isAhoNumber(3);
         assertEquals(actual, expected);
     }
 
@@ -28,9 +28,9 @@ class SingleNabeatuServiceTest {
     void isAhoNumber2(int Number) {
         boolean expected = true;
         if (Number % 3 >= 1) {
-            expected = false;
+            expected = true;
         }
-        boolean actual = service.isAhoNumber(0);
+        boolean actual = service.isAhoNumber(3);
         assertEquals(actual, expected);
     }
 }
