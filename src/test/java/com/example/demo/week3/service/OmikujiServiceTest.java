@@ -1,33 +1,38 @@
 package com.example.demo.week3.service;
 
+import java.util.Random;
+import org.junit.Before;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import static org.mockito.ArgumentMatchers.anyString;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockedConstruction;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mockConstruction;
+import static org.mockito.Mockito.when;
+import org.mockito.MockitoAnnotations;
 
 class OmikujiServiceTest {
 
     OmikujiService service = new OmikujiService();
 
-    @ParameterizedTest
-    @ValueSource(strings = {"凶", "小吉", "中吉", "大吉"})
-    void おみくじ結果(String s) {
-        String actual = service.getResult();
-        String expected = "";
-        if (actual.equals("大吉")) {
-            expected = s;
-        }else if(actual.equals("中吉")) {
-            expected = s;
-        }else if(actual.equals("小吉")) {
-            expected = s;
-        }else if(actual.equals("小吉")) {
-            expected = s;
-        }else {
-            expected = s;
-        }
-            assertEquals(actual, expected);
+    @Mock
+    private OmikujiService mockInfo = new OmikujiService();
+
+    @Before
+    public void setup() {
+        MockitoAnnotations.initMocks(this);
     }
 
+    @Test
+    void おみくじ結果() {
+        final String expected = "大吉";
+        when(mockInfo.getResult()).thenReturn("大吉");
+        String actual = service.getResult();
+            assertEquals(actual, expected);
+
+    }
 
     @Test
     void 凶の際のコメント() {
