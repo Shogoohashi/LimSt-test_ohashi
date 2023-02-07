@@ -24,7 +24,7 @@ class SingleNabeatuServiceTest {
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 4, 5, 7, 8})
-    @DisplayName("3の倍数でない数値はtrue")
+    @DisplayName("3の倍数でない数値はfalse")
     void isAhoNumber2(int Number) {
         boolean expected = true;
         if (Number % 3 != 0) {
@@ -36,7 +36,7 @@ class SingleNabeatuServiceTest {
 
     @ParameterizedTest
     @ValueSource(ints = {0})
-    @DisplayName("数値が0の場合はtrue")
+    @DisplayName("数値が0の場合はfalse")
     void isAhoNumber3(int Number) {
         boolean expected = true;
         if (Number == 0) {
