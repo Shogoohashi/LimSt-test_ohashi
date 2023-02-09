@@ -20,7 +20,7 @@ class NabeatuServiceTest {
     }
 
     @Test
-    @DisplayName("実行値が５５になる和")
+    @DisplayName("実行値が55になる和")
     void getTotalNum1() {
         int expected = 55;
         int actual = service.getTotalNum(10);
