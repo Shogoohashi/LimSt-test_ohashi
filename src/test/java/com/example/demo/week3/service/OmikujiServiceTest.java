@@ -2,67 +2,80 @@ package com.example.demo.week3.service;
 
 
 import java.util.Random;
-import org.assertj.core.util.DateUtil;
-import org.junit.Before;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
+import static org.mockito.ArgumentMatchers.anyInt;
 import org.mockito.MockedConstruction;
-import org.mockito.Mockito;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mockConstruction;
-import org.mockito.MockitoAnnotations;
-import static org.powermock.api.mockito.PowerMockito.doReturn;
-import static org.powermock.api.mockito.PowerMockito.mock;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
 
-
-@RunWith(PowerMockRunner.class)
-@PrepareForTest(DateUtil.class)
 class OmikujiServiceTest {
 
-    private OmikujiService omikujiService;
-
-    @Before
-    public void setup() {
-        MockitoAnnotations.openMocks(this);
-    }
+     OmikujiService omikujiService = new OmikujiService();
 
     @Test
-    void おみくじ結果() {
-        final String expected = "大吉";
-        Random random = new Random();
-        Mockito.when(omikujiService).getClass();
-            OmikujiService service = new OmikujiService();
-            String actual = service.getResult();
-            assertEquals(actual, expected);
+    void おみくじの結果が大吉を取得する() {
+        try (MockedConstruction<Random> ignored = mockConstruction(Random.class,
+                (mock, ctx) -> doReturn(0).when(mock).nextInt(anyInt()))) {
+            // 比較検証
+            String actual = omikujiService.getResult();
+            assertEquals("大吉", actual);
         }
-
     }
 
     @Test
-    void 凶の際のコメント() {
+    void おみくじの結果が中吉を取得する() {
+        try (MockedConstruction<Random> ignored = mockConstruction(Random.class,
+                (mock, ctx) -> doReturn(1).when(mock).nextInt(anyInt()))) {
+            // 比較検証
+            String actual = omikujiService.getResult();
+            assertEquals("中吉", actual);
+        }
+    }
+
+    @Test
+    void おみくじの結果が小吉を取得する() {
+        try (MockedConstruction<Random> ignored = mockConstruction(Random.class,
+                (mock, ctx) -> doReturn(2).when(mock).nextInt(anyInt()))) {
+            // 比較検証
+            String actual = omikujiService.getResult();
+            assertEquals("小吉", actual);
+        }
+    }
+
+    @Test
+    void おみくじの結果が凶を取得する() {
+        try (MockedConstruction<Random> ignored = mockConstruction(Random.class,
+                (mock, ctx) -> doReturn(4).when(mock).nextInt(anyInt()))) {
+            // 比較検証
+            String actual = omikujiService.getResult();
+            assertEquals("凶", actual);
+        }
+    }
+
+    @Test
+    void 凶の際のコメントを取得する() {
         String expected = "凶です、忘れ物など身の回りには要注意・・・";
         String actual = omikujiService.getResultComment("凶");
         assertEquals(actual, expected);
     }
 
     @Test
-    void 小吉の際のコメント() {
+    void 小吉の際のコメント取得する() {
         String expected = "小吉です、いつものように穏やかに過ごせるでしょう";
         String actual = omikujiService.getResultComment("小吉");
         assertEquals(actual, expected);
     }
 
     @Test
-    void 中吉の際のコメント() {
+    void 中吉の際のコメント取得する() {
         String expected = "中吉です、いつも以上に楽しく過ごせるでしょう";
         String actual = omikujiService.getResultComment("中吉");
         assertEquals(actual, expected);
     }
 
     @Test
-    void 大吉の際のコメント() {
+    void 大吉の際のコメント取得する() {
         String expected = "大吉です！きっと明日はいい天気になります。ラッキーカラーは緑です。" +
                 "大吉です！きっと明日はいい天気になります。ラッキーカラーは緑です。" +
                 "大吉です！きっと明日はいい天気になります。ラッキーカラーは緑です。" +
