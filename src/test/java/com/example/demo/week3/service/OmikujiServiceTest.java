@@ -17,7 +17,6 @@ class OmikujiServiceTest {
     void おみくじの結果が大吉を取得する() {
         try (MockedConstruction<Random> ignored = mockConstruction(Random.class,
                 (mock, ctx) -> doReturn(0).when(mock).nextInt(anyInt()))) {
-            // 比較検証
             String actual = omikujiService.getResult();
             assertEquals("大吉", actual);
         }
@@ -27,7 +26,6 @@ class OmikujiServiceTest {
     void おみくじの結果が中吉を取得する() {
         try (MockedConstruction<Random> ignored = mockConstruction(Random.class,
                 (mock, ctx) -> doReturn(1).when(mock).nextInt(anyInt()))) {
-            // 比較検証
             String actual = omikujiService.getResult();
             assertEquals("中吉", actual);
         }
@@ -37,7 +35,6 @@ class OmikujiServiceTest {
     void おみくじの結果が小吉を取得する() {
         try (MockedConstruction<Random> ignored = mockConstruction(Random.class,
                 (mock, ctx) -> doReturn(2).when(mock).nextInt(anyInt()))) {
-            // 比較検証
             String actual = omikujiService.getResult();
             assertEquals("小吉", actual);
         }
@@ -47,7 +44,6 @@ class OmikujiServiceTest {
     void おみくじの結果が凶を取得する() {
         try (MockedConstruction<Random> ignored = mockConstruction(Random.class,
                 (mock, ctx) -> doReturn(4).when(mock).nextInt(anyInt()))) {
-            // 比較検証
             String actual = omikujiService.getResult();
             assertEquals("凶", actual);
         }
@@ -57,21 +53,21 @@ class OmikujiServiceTest {
     void 凶の際のコメントを取得する() {
         String expected = "凶です、忘れ物など身の回りには要注意・・・";
         String actual = omikujiService.getResultComment("凶");
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     @Test
     void 小吉の際のコメント取得する() {
         String expected = "小吉です、いつものように穏やかに過ごせるでしょう";
         String actual = omikujiService.getResultComment("小吉");
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     @Test
     void 中吉の際のコメント取得する() {
         String expected = "中吉です、いつも以上に楽しく過ごせるでしょう";
         String actual = omikujiService.getResultComment("中吉");
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -81,6 +77,6 @@ class OmikujiServiceTest {
                 "大吉です！きっと明日はいい天気になります。ラッキーカラーは緑です。" +
                 "大吉です！きっと明日はいい天気になります。ラッキーカラーは緑です。";
         String actual = omikujiService.getResultComment("大吉");
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 }
