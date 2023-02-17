@@ -18,7 +18,8 @@ class OmikujiServiceTest {
         try (MockedConstruction<Random> ignored = mockConstruction(Random.class,
                 (mock, ctx) -> doReturn(0).when(mock).nextInt(anyInt()))) {
             String actual = omikujiService.getResult();
-            assertEquals("大吉", actual);
+            String expected = "大吉";
+            assertEquals(expected, actual);
         }
     }
 
@@ -27,7 +28,8 @@ class OmikujiServiceTest {
         try (MockedConstruction<Random> ignored = mockConstruction(Random.class,
                 (mock, ctx) -> doReturn(1).when(mock).nextInt(anyInt()))) {
             String actual = omikujiService.getResult();
-            assertEquals("中吉", actual);
+            String expected = "中吉";
+            assertEquals(expected, actual);
         }
     }
 
@@ -36,7 +38,8 @@ class OmikujiServiceTest {
         try (MockedConstruction<Random> ignored = mockConstruction(Random.class,
                 (mock, ctx) -> doReturn(2).when(mock).nextInt(anyInt()))) {
             String actual = omikujiService.getResult();
-            assertEquals("小吉", actual);
+            String expected = "小吉";
+            assertEquals(expected, actual);
         }
     }
 
@@ -45,7 +48,8 @@ class OmikujiServiceTest {
         try (MockedConstruction<Random> ignored = mockConstruction(Random.class,
                 (mock, ctx) -> doReturn(4).when(mock).nextInt(anyInt()))) {
             String actual = omikujiService.getResult();
-            assertEquals("凶", actual);
+            String expected = "凶";
+            assertEquals(expected, actual);
         }
     }
 
