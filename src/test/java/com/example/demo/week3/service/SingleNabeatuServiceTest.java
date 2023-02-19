@@ -2,8 +2,7 @@ package com.example.demo.week3.service;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.api.Test;
 
 class SingleNabeatuServiceTest {
 
@@ -19,74 +18,65 @@ class SingleNabeatuServiceTest {
     }
 
 
-    @ParameterizedTest
-    @ValueSource(booleans = {true})
-    @DisplayName("入力値が1の場合、取得できない")
-    void isAhoNumber1(boolean expected) {
+    @Test
+    @DisplayName("数値が1の場合、trueを返す")
+    void isAhoNumber1() {
         boolean actual = service.isAhoNumber(1);
         assertThat(actual).isFalse();
     }
 
-    @ParameterizedTest
-    @ValueSource(booleans = {true})
-    @DisplayName("入力値が2の場合、取得できない")
-    void isAhoNumber2(boolean expected) {
+    @Test
+    @DisplayName("数値が2の場合、falseを返す")
+    void isAhoNumber2() {
         boolean actual = service.isAhoNumber(2);
         assertThat(actual).isFalse();
     }
 
-    @ParameterizedTest
-    @ValueSource(booleans = {true})
-    @DisplayName("入力値が3の場合、取得できる")
-    void isAhoNumber3(boolean expected) {
+    @Test
+    @DisplayName("数値が3の場合、trueを返す")
+    void isAhoNumber3() {
         boolean actual = service.isAhoNumber(3);
         assertThat(actual).isTrue();
     }
 
-    @ParameterizedTest
-    @ValueSource(booleans = {true})
-    @DisplayName("入力値が4の場合、取得できない")
-    void isAhoNumber4(boolean expected) {
+    @Test
+    @DisplayName("数値が4の場合、falseを返す")
+    void isAhoNumber4() {
         boolean actual = service.isAhoNumber(4);
         assertThat(actual).isFalse();
     }
 
-    @ParameterizedTest
-    @ValueSource(booleans = {true})
-    @DisplayName("入力値が5の場合、取得できない")
-    void isAhoNumber5(boolean expected) {
+    @Test
+    @DisplayName("数値が5の場合、falseを返す")
+    void isAhoNumber5() {
         boolean actual = service.isAhoNumber(5);
         assertThat(actual).isFalse();
     }
 
-    @ParameterizedTest
-    @ValueSource(booleans = {true})
-    @DisplayName("入力値が6の場合、取得できる")
-    void isAhoNumber6(boolean expected) {
+    @Test
+    @DisplayName("数値が6の場合、trueを返す")
+    void isAhoNumber6() {
         boolean actual = service.isAhoNumber(6);
         assertThat(actual).isTrue();
     }
 
-    @ParameterizedTest
-    @ValueSource(booleans = {true})
-    @DisplayName("入力値が7の場合、取得できない")
-    void isAhoNumber7(boolean expected) {
+    @Test
+    @DisplayName("数値が7の場合、falseを返す")
+    void isAhoNumber7() {
         boolean actual = service.isAhoNumber(7);
         assertThat(actual).isFalse();
     }
 
-    @ParameterizedTest
-    @ValueSource(booleans = {true})
-    @DisplayName("入力値が8の場合、取得できない")
-    void isAhoNumber8(boolean expected) {
+    @Test
+    @DisplayName("数値が8の場合、falseを返す")
+    void isAhoNumber8() {
         boolean actual = service.isAhoNumber(8);
         assertThat(actual).isFalse();
     }
 
-    @ParameterizedTest
-    @ValueSource(booleans = {true})
-    @DisplayName("入力値が9の場合、取得できる")
-    void isAhoNumber9(boolean expected) {
+    @Test
+    @DisplayName("数値が9の場合、trueを返す")
+    void isAhoNumber9() {
         boolean actual = service.isAhoNumber(9);
         assertThat(actual).isTrue();
     }
