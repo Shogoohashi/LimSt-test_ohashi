@@ -1,15 +1,37 @@
 package com.example.demo.week4.service;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 class NabeatuServiceTest {
 
     NabeatuService service = new NabeatuService();
+
+    @Test
+    @DisplayName("入力値が1の場合、１が取得する")
+    void getTotalNum() {
+        int expected = 1;
+        int actual = service.getTotalNum(1);
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("入力値が9の場合、45が取得する")
+    void getTotalNum1() {
+        int expected = 45;
+        int actual = service.getTotalNum(9);
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("入力値が100000の場合、705082704が取得する")
+    void getTotalNum2() {
+        int expected = 705082704;
+        int actual = service.getTotalNum(100000);
+        assertThat(actual).isEqualTo(expected);
+    }
+
 
     @Test
     @DisplayName("合計が0の場合,取得できる")
