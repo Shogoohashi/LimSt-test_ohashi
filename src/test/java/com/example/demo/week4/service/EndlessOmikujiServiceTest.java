@@ -13,26 +13,17 @@ import org.mockito.MockitoAnnotations;
 
 class EndlessOmikujiServiceTest {
 
-    EndlessOmikujiService service = new EndlessOmikujiService();
-
-    @Mock
-    public EndlessOmikujiService mockInfo = new EndlessOmikujiService();
-
-    @Before
-    public void setup() {
-        MockitoAnnotations.initMocks(this);
-    }
+    EndlessOmikujiService endlessOmikujiService = new EndlessOmikujiService();
 
     @Test
-    void getResult() {
-        final String expected = "大吉";
-        try (MockedConstruction<Random> ignore = mockConstruction(Random.class,
-                (mock, ctx) -> doReturn("大吉").when(mock).(anyInt()))) {
-            String actual = service.getResult();
-            assertEquals(actual, expected);
+    void おみくじの結果が凶になった場合に結果を取得() {
+        try (MockedConstruction<Random> ignored = mockConstruction(Random.class,
+                (mock, ctx) -> doReturn(0).when(mock).nextInt(anyInt()))) {
+            String actual = endlessOmikujiService.getResult();
+            String expected = "凶";
+            assertEquals(expected, actual);
         }
     }
-
     @Test
     void getResultComment() {
     }
