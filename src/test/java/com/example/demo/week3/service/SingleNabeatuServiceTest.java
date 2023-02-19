@@ -11,82 +11,82 @@ class SingleNabeatuServiceTest {
     SingleNabeatuService service = new SingleNabeatuService();
 
     @ParameterizedTest
-    @ValueSource(ints = {0})
+    @ValueSource(booleans = {true})
     @DisplayName("数値が0の場合,取得できる")
-    void isAhoNumber0(int expected) {
+    void isAhoNumber0(boolean expected) {
         boolean actual = service.isAhoNumber(0);
         assertThat(actual).isFalse();
     }
 
 
     @ParameterizedTest
-    @ValueSource(ints = {3, 6, 9, 15, 99, 213, 5693})
+    @ValueSource(booleans = {true})
     @DisplayName("3の倍数または3が含めれていない場合、取得できない")
-    void isAhoNumber1(int expected) {
+    void isAhoNumber1(boolean expected) {
         boolean actual = service.isAhoNumber(1);
         assertThat(actual).isFalse();
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {3, 6, 9, 15, 99, 213, 5693})
+    @ValueSource(booleans = {true})
     @DisplayName("3の倍数または3が含めれていない場合、取得できない")
-    void isAhoNumber2(int expected) {
+    void isAhoNumber2(boolean expected) {
         boolean actual = service.isAhoNumber(2);
         assertThat(actual).isFalse();
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {3, 6, 9, 15, 99, 213, 5693})
+    @ValueSource(booleans = {true})
     @DisplayName("3の倍数または3が含めれている場合、取得できる")
-    void isAhoNumber3(int expected) {
+    void isAhoNumber3(boolean expected) {
         boolean actual = service.isAhoNumber(3);
         assertThat(actual).isTrue();
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {3, 6, 9, 15, 99, 213, 5692})
+    @ValueSource(booleans = {true})
     @DisplayName("3の倍数または3が含めれていない場合、取得できない")
-    void isAhoNumber4(int expected) {
+    void isAhoNumber4(boolean expected) {
         boolean actual = service.isAhoNumber(4);
         assertThat(actual).isFalse();
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {3, 6, 9, 15, 99, 213, 5692})
+    @ValueSource(booleans = {true})
     @DisplayName("3の倍数または3が含めれていない場合、取得できない")
-    void isAhoNumber5(int expected) {
+    void isAhoNumber5(boolean expected) {
         boolean actual = service.isAhoNumber(5);
         assertThat(actual).isFalse();
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {3, 6, 9, 15, 99, 213, 5692})
+    @ValueSource(booleans = {true})
     @DisplayName("3の倍数または3が含めれている場合、取得できる")
-    void isAhoNumber6(int expected) {
+    void isAhoNumber6(boolean expected) {
         boolean actual = service.isAhoNumber(6);
         assertThat(actual).isTrue();
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {3, 6, 9, 15, 99, 213, 5692})
+    @ValueSource(booleans = {true})
     @DisplayName("3の倍数または3が含めれていない場合、取得できない")
-    void isAhoNumber7(int expected) {
+    void isAhoNumber7(boolean expected) {
         boolean actual = service.isAhoNumber(7);
         assertThat(actual).isFalse();
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {3, 6, 9, 15, 99, 213, 5692})
+    @ValueSource(booleans = {true})
     @DisplayName("3の倍数または3が含めれていない場合、取得できない")
-    void isAhoNumber8(int expected) {
+    void isAhoNumber8(boolean expected) {
         boolean actual = service.isAhoNumber(8);
         assertThat(actual).isFalse();
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {3, 6, 9, 15, 99, 213, 5692})
+    @ValueSource(booleans = {true})
     @DisplayName("3の倍数または3が含めれている場合、取得できる")
-    void isAhoNumber9(int expected) {
+    void isAhoNumber9(boolean expected) {
         boolean actual = service.isAhoNumber(9);
         assertThat(actual).isTrue();
     }
