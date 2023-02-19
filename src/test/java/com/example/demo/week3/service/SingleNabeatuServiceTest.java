@@ -9,10 +9,9 @@ class SingleNabeatuServiceTest {
 
     SingleNabeatuService service = new SingleNabeatuService();
 
-    @ParameterizedTest
-    @ValueSource(booleans = {true})
-    @DisplayName("数値が0の場合,取得できる")
-    void isAhoNumber0(boolean expected) {
+    @Test
+    @DisplayName("数値が0の場合、falseを返す")
+    void isAhoNumber0() {
         boolean actual = service.isAhoNumber(0);
         assertThat(actual).isFalse();
     }
