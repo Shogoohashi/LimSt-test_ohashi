@@ -2,13 +2,24 @@ package com.example.demo.week6.service;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.doReturn;
+import org.mockito.MockitoAnnotations;
+import org.mockito.Spy;
 
 class CalculatorServiceTest {
 
-    CalculatorService calculatorService = new CalculatorService();
+    @Spy
+    CalculatorService calculatorService;
+
+    @BeforeEach
+    public void setup() {
+        MockitoAnnotations.openMocks(this);
+    }
 
     @Test
     @DisplayName("電卓で計算可能な演算子の和名を取得する")
@@ -27,7 +38,7 @@ class CalculatorServiceTest {
         expected.put("mul", "×");
         expected.put("div", "÷");
 
-        Map actual = calculatorService.getCalcTypes();
+        Map<String, String> actual = calculatorService.getCalcTypes();
 
         assertThat(actual).isEqualTo(expected);
 
@@ -66,81 +77,73 @@ class CalculatorServiceTest {
     }
 
     @Test
-    @DisplayName("addを使用した場合、足し算されて値が20になる")
+    @DisplayName("addを使用した場合、足し算されて値が200.0になる")
     void calculate() {
-        double expected = 20;
-        double firstNum = 10;
-        double secondNum = 10;
-        double actual = calculatorService.calculate("add", firstNum, secondNum);
-        assertThat(actual).isEqualTo(expected);
+        doReturn(100.0).when(calculatorService).add(anyInt(),anyInt());
+        double actual = calculatorService.add(100.0, 100.0);
+        assertThat(actual).isEqualTo(200.0);
     }
 
     @Test
-    @DisplayName("subを使用した場合、引き算されて値が0になる")
+    @DisplayName("subを使用した場合、引き算されて値が1.0になる")
     void calculate1() {
-        double expected = 0;
-        double firstNum = 10;
-        double secondNum = 10;
-        double actual = calculatorService.calculate("sub", firstNum, secondNum);
-        assertThat(actual).isEqualTo(expected);
+        doReturn(100.0).when(calculatorService).sub(anyInt(),anyInt());
+        double actual = calculatorService.sub(11.5,10.5);
+        assertThat(actual).isEqualTo(1.0);
     }
 
     @Test
-    @DisplayName("mulを使用した場合、掛け算されて値が100になる")
+    @DisplayName("mulを使用した場合、掛け算されて値が236.43になる")
     void calculate2() {
-        double expected = 100;
-        double firstNum = 10;
-        double secondNum = 10;
-        double actual = calculatorService.calculate("mul", firstNum, secondNum);
-        assertThat(actual).isEqualTo(expected);
+        doReturn(100.0).when(calculatorService).mul(anyInt(),anyInt());
+        double actual = calculatorService.mul(11.1,21.3);
+        assertThat(actual).isEqualTo(236.43);
     }
 
     @Test
-    @DisplayName("divを使用した場合、割り算されて値が1になる")
+    @DisplayName("divを使用した場合、割り算されて値が2.0540540540540544になる")
     void calculate3() {
-        double expected = 1;
-        double firstNum = 10;
-        double secondNum = 10;
-        double actual = calculatorService.calculate("div", firstNum, secondNum);
-        assertThat(actual).isEqualTo(expected);
+        doReturn(100.0).when(calculatorService).mul(anyInt(),anyInt());
+        double actual = calculatorService.div(45.6, 22.2);
+        assertThat(actual).isEqualTo(2.0540540540540544);
     }
 
     @Test
-    @DisplayName("25＋25の場合、50になる")
+    @DisplayName("25.3＋25.6の場合、50.900000000000006になる")
     void add() {
-        double expected = 50;
-        double firstNum = 25;
-        double secondNum = 25;
+        double expected = 50.900000000000006;
+        double firstNum = 25.3;
+        double secondNum = 25.6;
         double actual = calculatorService.add(firstNum,secondNum);
         assertThat(actual).isEqualTo(expected);
     }
 
     @Test
-    @DisplayName("25-25の場合、0になる")
+    @DisplayName("43.4-21.1の場合、22.299999999999997になる")
     void sub() {
-        double expected = 0;
-        double firstNum = 25;
-        double secondNum = 25;
+        double expected = 22.299999999999997;
+        double firstNum = 43.4;
+        double secondNum = 21.1;
         double actual = calculatorService.sub(firstNum,secondNum);
         assertThat(actual).isEqualTo(expected);
     }
 
     @Test
-    @DisplayName("25×25の場合、625になる")
+    @DisplayName("11.1×23.4の場合、259.73999999999995になる")
     void mul() {
-        double expected = 625;
-        double firstNum = 25;
-        double secondNum = 25;
+        double expected = 259.73999999999995;
+        double firstNum = 11.1;
+        double secondNum = 23.4;
         double actual = calculatorService.mul(firstNum,secondNum);
         assertThat(actual).isEqualTo(expected);
     }
 
     @Test
-    @DisplayName("25/25の場合、1になる")
+    @DisplayName("12.2/6.2の場合、1.9677419354838708になる")
     void div() {
-        double expected = 1;
-        double firstNum = 25;
-        double secondNum = 25;
+        double expected = 1.9677419354838708;
+        double firstNum = 12.2;
+        double secondNum = 6.2;
         double actual = calculatorService.div(firstNum,secondNum);
         assertThat(actual).isEqualTo(expected);
     }
