@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 class CompoundInterestExServiceTest {
 
-    CompoundInterestExService compoundInterestExService;
+    CompoundInterestExService compoundInterestExService = new CompoundInterestExService();
 
     @Test
     @DisplayName("各年の福利計算結果を取得した場合、変数Listに格納して結果を出す。")
