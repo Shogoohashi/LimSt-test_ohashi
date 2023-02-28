@@ -39,7 +39,7 @@ class NumeronServiceTest {
         test.add(1);
         test.add(1);
         test.add(1);
-        List<Integer> actual = numeronService.getAttackResult(test,"012");
+        List<Integer> actual = numeronService.getAttackResult(test, "012");
         assertThat(actual).isEqualTo(expected);
     }
 
@@ -55,7 +55,7 @@ class NumeronServiceTest {
         attack.add(1);
         attack.add(1);
         attack.add(1);
-        int actual = numeronService.getHitCount(answer,attack);
+        int actual = numeronService.getHitCount(answer, attack);
         assertThat(actual).isEqualTo(expected);
     }
 
@@ -71,7 +71,7 @@ class NumeronServiceTest {
         attack.add(1);
         attack.add(1);
         attack.add(1);
-        int actual = numeronService.getBlowCount(answer,attack);
+        int actual = numeronService.getBlowCount(answer, attack);
         assertThat(actual).isEqualTo(expected);
     }
 
