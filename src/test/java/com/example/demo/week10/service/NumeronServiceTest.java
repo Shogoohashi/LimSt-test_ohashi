@@ -19,7 +19,7 @@ class NumeronServiceTest {
     NumeronService numeronService = new NumeronService();
 
     @Test
-    @DisplayName("ランダムの数値が一致した場合、答えの数列に格納される")
+    @DisplayName("答えの数列を格納をリスト型の値を返すこと")
     void init() {
         try (MockedConstruction<Random> ignored = mockConstruction(Random.class,
                 (mock, ctx) -> doReturn(0).when(mock).nextInt(anyInt()))) {
@@ -113,7 +113,7 @@ class NumeronServiceTest {
     }
 
     @Test
-    @DisplayName("ターン数が3の場合、Aのコメントを取得する")
+    @DisplayName("ターン数が2から4の場合、Aのコメントを取得する")
     void getRank1() {
         List<String> expected = new ArrayList<>();
         expected.add("A");
@@ -123,7 +123,7 @@ class NumeronServiceTest {
     }
 
     @Test
-    @DisplayName("ターン数が7の場合、Bのコメントを取得する")
+    @DisplayName("ターン数が5から7の場合、Bのコメントを取得する")
     void getRank2() {
         List<String> expected = new ArrayList<>();
         expected.add("B");
@@ -133,7 +133,7 @@ class NumeronServiceTest {
     }
 
     @Test
-    @DisplayName("ターン数が10の場合、Cのコメントを取得する")
+    @DisplayName("ターン数が8から10の場合、Cのコメントを取得する")
     void getRank3() {
         List<String> expected = new ArrayList<>();
         expected.add("C");
@@ -143,7 +143,7 @@ class NumeronServiceTest {
     }
 
     @Test
-    @DisplayName("ターン数が11の場合、Dのコメントを取得する")
+    @DisplayName("ターン数が11から13の場合、Dのコメントを取得する")
     void getRank4() {
         List<String> expected = new ArrayList<>();
         expected.add("D");
@@ -153,7 +153,7 @@ class NumeronServiceTest {
     }
 
     @Test
-    @DisplayName("ターン数が16の場合、？？？のコメントを取得する")
+    @DisplayName("ターン数が１４以上の場合、？？？のコメントを取得する")
     void getRank5() {
         List<String> expected = new ArrayList<>();
         expected.add("？？？");
