@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import static org.mockito.ArgumentMatchers.anyInt;
 import org.mockito.MockedConstruction;
@@ -38,24 +39,26 @@ class NumeronServiceTest {
         assertThat(actual).isEqualTo(expected);
     }
 
-    @Test
-    @DisplayName("答えの数列と入力数列が一致した場合、カウントする。")
-    void getHitCount() {
-        int expected = 3;
-        List<Integer> answer = new ArrayList<>(Arrays.asList(1, 1, 1));
-        List<Integer> attack = new ArrayList<>(Arrays.asList(1, 1, 1));
-        int actual = numeronService.getHitCount(answer, attack);
-        assertThat(actual).isEqualTo(expected);
-    }
 
-    @Test
-    @DisplayName("答えの数列と入力数列が一致しない場合、カウントされない。")
-    void getBlowCount() {
-        int expected = 6;
-        List<Integer> answer = new ArrayList<>(Arrays.asList(1, 1, 1));
-        List<Integer> attack = new ArrayList<>(Arrays.asList(1, 1, 1));
-        int actual = numeronService.getBlowCount(answer, attack);
-        assertThat(actual).isEqualTo(expected);
+    @Nested
+    @DisplayName("答えの数列と入力数列が数値のみ一致しない場合、カウントする。")
+    class GetBlowCount {
+        @Test
+        void case1() {
+            int expected = 1;
+            List<Integer> answer = new ArrayList<>(Arrays.asList(2, 1, 4));
+            List<Integer> attack = new ArrayList<>(Arrays.asList(6, 5, 1));
+            int actual = numeronService.getBlowCount(answer, attack);
+            assertThat(actual).isEqualTo(expected);
+        }
+        @Test
+        void case2() {
+            int expected = 1;
+            List<Integer> answer = new ArrayList<>(Arrays.asList(2, 1, 4));
+            List<Integer> attack = new ArrayList<>(Arrays.asList(6, 5, 1));
+            int actual = numeronService.getBlowCount(answer, attack);
+            assertThat(actual).isEqualTo(expected);
+        }
     }
 
     @Test
