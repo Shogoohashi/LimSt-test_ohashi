@@ -31,7 +31,7 @@ class CompoundInterestExServiceTest {
     @DisplayName("目標金額に達成できなかった場合、目標金額には及ばず・・・を取得する")
     void getIsOveredYearMsg() {
         String actual = compoundInterestExService.getIsOveredYearMsg
-                (compoundInterestExService.getPriceList(2,2.1,10),10);
+                (compoundInterestExService.getPriceList(2, 2.1, 10), 10);
         assertThat(actual).isEqualTo("目標金額には及ばず・・・");
     }
 
@@ -39,7 +39,7 @@ class CompoundInterestExServiceTest {
     @DisplayName("目標金額に達成できた場合、1年目に達成！！！を取得する")
     void getIsOveredYearMsg1() {
         String actual = compoundInterestExService.getIsOveredYearMsg
-                (compoundInterestExService.getPriceList(2,2.1,2),2);
+                (compoundInterestExService.getPriceList(2, 2.1, 2), 2);
         assertThat(actual).isEqualTo("1年目に達成！！！");
     }
 
@@ -47,7 +47,7 @@ class CompoundInterestExServiceTest {
     @DisplayName("目標金額に到達しなかった場合、年数は0年になる")
     void getOveredTargetPriceYear() {
         int actual = compoundInterestExService.getOveredTargetPriceYear
-                (compoundInterestExService.getPriceList(2,2.1,2),10);
+                (compoundInterestExService.getPriceList(2, 2.1, 2), 10);
         assertThat(actual).isEqualTo(0);
     }
 
@@ -55,7 +55,7 @@ class CompoundInterestExServiceTest {
     @DisplayName("目標金額に到達した場合、年数は1年になる")
     void getOveredTargetPriceYear1() {
         int actual = compoundInterestExService.getOveredTargetPriceYear
-                (compoundInterestExService.getPriceList(2,2.1,2),2);
+                (compoundInterestExService.getPriceList(2, 2.1, 2), 2);
         assertThat(actual).isEqualTo(1);
     }
 }
