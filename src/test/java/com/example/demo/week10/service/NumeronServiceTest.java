@@ -62,9 +62,13 @@ class NumeronServiceTest {
     }
 
     @Test
-    @DisplayName("答えの数列と入力値が一致する場合、成功する")
+    @DisplayName("getTurnが呼び出される度にturnが増加すること")
     void addturn() {
-        int expected = 0;
+        int expected = 1;
+        int beforeTurn = numeronService.getTurn();
+        assertThat(beforeTurn).isEqualTo(0);
+
+        numeronService.addturn();
         int actual = numeronService.getTurn();
         assertThat(actual).isEqualTo(expected);
     }
