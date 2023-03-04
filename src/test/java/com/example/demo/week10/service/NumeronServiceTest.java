@@ -19,7 +19,7 @@ class NumeronServiceTest {
     NumeronService numeronService = new NumeronService();
 
     @Test
-    @DisplayName("答えの数列を格納をリスト型の値を返すこと")
+    @DisplayName("ランダム数値3桁が格納されるリストを返ってくること")
     void init() {
         try (MockedConstruction<Random> ignored = mockConstruction(Random.class,
                 (mock, ctx) -> doReturn(0).when(mock).nextInt(anyInt()))) {
