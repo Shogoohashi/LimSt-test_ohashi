@@ -23,8 +23,8 @@ class NumeronServiceTest {
     void init() {
         try (MockedConstruction<Random> ignored = mockConstruction(Random.class,
                 (mock, ctx) -> doReturn(0).when(mock).nextInt(anyInt()))) {
-            List expected = new ArrayList<>(Arrays.asList(0, 1, 2));
-            List actual = numeronService.init();
+            List<Integer> expected = new ArrayList<>(Arrays.asList(0, 1, 2));
+            List<Integer> actual = numeronService.init();
             assertThat(actual).isEqualTo(expected);
         }
     }
@@ -32,9 +32,9 @@ class NumeronServiceTest {
     @Test
     @DisplayName("答えの数列と入力値が一致する場合、成功する")
     void getAttackResult() {
-        List expected = new ArrayList<>(Arrays.asList(3, 0));
-        List test = new ArrayList<>(Arrays.asList(0, 1, 2));
-        List actual = numeronService.getAttackResult(test, "012");
+        List<Integer> expected = new ArrayList<>(Arrays.asList(3, 0));
+        List<Integer> test = new ArrayList<>(Arrays.asList(0, 1, 2));
+        List<Integer> actual = numeronService.getAttackResult(test, "012");
         assertThat(actual).isEqualTo(expected);
     }
 
@@ -42,8 +42,8 @@ class NumeronServiceTest {
     @DisplayName("答えの数列と入力数列が一致した場合、カウントする。")
     void getHitCount() {
         int expected = 3;
-        List answer = new ArrayList<>(Arrays.asList(1, 1, 1));
-        List attack = new ArrayList<>(Arrays.asList(1, 1, 1));
+        List<Integer> answer = new ArrayList<>(Arrays.asList(1, 1, 1));
+        List<Integer> attack = new ArrayList<>(Arrays.asList(1, 1, 1));
         int actual = numeronService.getHitCount(answer, attack);
         assertThat(actual).isEqualTo(expected);
     }
@@ -52,8 +52,8 @@ class NumeronServiceTest {
     @DisplayName("答えの数列と入力数列が一致しない場合、カウントされない。")
     void getBlowCount() {
         int expected = 6;
-        List answer = new ArrayList<>(Arrays.asList(1, 1, 1));
-        List attack = new ArrayList<>(Arrays.asList(1, 1, 1));
+        List<Integer> answer = new ArrayList<>(Arrays.asList(1, 1, 1));
+        List<Integer> attack = new ArrayList<>(Arrays.asList(1, 1, 1));
         int actual = numeronService.getBlowCount(answer, attack);
         assertThat(actual).isEqualTo(expected);
     }
@@ -71,8 +71,8 @@ class NumeronServiceTest {
     void getAnswerList() {
         try (MockedConstruction<Random> ignored = mockConstruction(Random.class,
                 (mock, ctx) -> doReturn(0).when(mock).nextInt(anyInt()))) {
-            List expected = new ArrayList<>(Arrays.asList(0, 1, 2));
-            List actual = numeronService.init();
+            List<Integer> expected = new ArrayList<>(Arrays.asList(0, 1, 2));
+            List<Integer> actual = numeronService.init();
             assertThat(actual).isEqualTo(expected);
         }
     }
@@ -88,48 +88,48 @@ class NumeronServiceTest {
     @Test
     @DisplayName("ターン数が１の場合、Sのコメントを取得する")
     void getRank() {
-        List expected = new ArrayList<>(Arrays.asList("S", "ぅんを使い果たした。かぇりみちにお気をつけて"));
-        List actual = numeronService.getRank(1);
+        List<String> expected = new ArrayList<>(Arrays.asList("S", "ぅんを使い果たした。かぇりみちにお気をつけて"));
+        List<String> actual = numeronService.getRank(1);
         assertThat(actual).isEqualTo(expected);
     }
 
     @Test
     @DisplayName("ターン数が2から4の場合、Aのコメントを取得する")
     void getRank1() {
-        List expected = new ArrayList<>(Arrays.asList("A", "あいんしゅたいん並み"));
-        List actual = numeronService.getRank(3);
+        List<String> expected = new ArrayList<>(Arrays.asList("A", "あいんしゅたいん並み"));
+        List<String> actual = numeronService.getRank(3);
         assertThat(actual).isEqualTo(expected);
     }
 
     @Test
     @DisplayName("ターン数が5から7の場合、Bのコメントを取得する")
     void getRank2() {
-        List expected = new ArrayList<>(Arrays.asList("B", "やるねぇ"));
-        List actual = numeronService.getRank(7);
+        List<String> expected = new ArrayList<>(Arrays.asList("B", "やるねぇ"));
+        List<String> actual = numeronService.getRank(7);
         assertThat(actual).isEqualTo(expected);
     }
 
     @Test
     @DisplayName("ターン数が8から10の場合、Cのコメントを取得する")
     void getRank3() {
-        List expected = new ArrayList<>(Arrays.asList("C", "いっぱんじん"));
-        List actual = numeronService.getRank(10);
+        List<String> expected = new ArrayList<>(Arrays.asList("C", "いっぱんじん"));
+        List<String> actual = numeronService.getRank(10);
         assertThat(actual).isEqualTo(expected);
     }
 
     @Test
     @DisplayName("ターン数が11から13の場合、Dのコメントを取得する")
     void getRank4() {
-        List expected = new ArrayList<>(Arrays.asList("D", "IQ68のヒト"));
-        List actual = numeronService.getRank(11);
+        List<String> expected = new ArrayList<>(Arrays.asList("D", "IQ68のヒト"));
+        List<String> actual = numeronService.getRank(11);
         assertThat(actual).isEqualTo(expected);
     }
 
     @Test
     @DisplayName("ターン数が１４以上の場合、？？？のコメントを取得する")
     void getRank5() {
-        List expected = new ArrayList<>(Arrays.asList("？？？", "ちんぱんじぃ"));
-        List actual = numeronService.getRank(16);
+        List<String> expected = new ArrayList<>(Arrays.asList("？？？", "ちんぱんじぃ"));
+        List<String> actual = numeronService.getRank(16);
         assertThat(actual).isEqualTo(expected);
     }
 }
