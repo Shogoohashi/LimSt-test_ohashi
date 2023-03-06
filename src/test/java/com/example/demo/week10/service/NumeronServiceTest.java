@@ -35,7 +35,8 @@ class NumeronServiceTest {
     void getAttackResult() {
         List<Integer> expected = Arrays.asList(3, 0);
         List<Integer> answerList = Arrays.asList(0, 1, 2);
-        List<Integer> actual = numeronService.getAttackResult(answerList, "012");
+        String attackNumber = "012";
+        List<Integer> actual = numeronService.getAttackResult(answerList, attackNumber);
         assertThat(actual).isEqualTo(expected);
     }
 
