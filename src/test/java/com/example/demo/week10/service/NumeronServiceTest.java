@@ -34,8 +34,8 @@ class NumeronServiceTest {
     @DisplayName("答えの数列と入力値が一致する場合、成功する")
     void getAttackResult() {
         List<Integer> expected = new ArrayList<>(Arrays.asList(3, 0));
-        List<Integer> test = Arrays.asList(0, 1, 2);
-        List<Integer> actual = numeronService.getAttackResult(test, "012");
+        List<Integer> answerList = Arrays.asList(0, 1, 2);
+        List<Integer> actual = numeronService.getAttackResult(answerList, "012");
         assertThat(actual).isEqualTo(expected);
     }
 
