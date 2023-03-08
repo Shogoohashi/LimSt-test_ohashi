@@ -11,7 +11,7 @@ class CompoundInterestExServiceTest {
     CompoundInterestExService compoundInterestExService = new CompoundInterestExService();
 
     @Test
-    @DisplayName("各年の福利計算結果を取得した場合、変数Listに格納して結果を出す。")
+    @DisplayName("各年の福利計算結果を変数Listに格納して結果を出す。")
     void getPriceList() {
         List<Double> expected = new ArrayList<>();
         expected.add(100.29999999999998);
@@ -30,32 +30,48 @@ class CompoundInterestExServiceTest {
     @Test
     @DisplayName("目標金額に達成できなかった場合、目標金額には及ばず・・・を取得する")
     void getIsOveredYearMsg() {
+        int principal = 2;
+        double rate = 2.1;
+        int year = 10;
+        int targetPrice = 10;
         String actual = compoundInterestExService.getIsOveredYearMsg
-                (compoundInterestExService.getPriceList(2, 2.1, 10), 10);
+                (compoundInterestExService.getPriceList(principal, rate, year), targetPrice);
         assertThat(actual).isEqualTo("目標金額には及ばず・・・");
     }
 
     @Test
     @DisplayName("目標金額に達成できた場合、1年目に達成！！！を取得する")
     void getIsOveredYearMsg1() {
+        int principal = 2;
+        double rate = 2.1;
+        int year = 2;
+        int targetPrice = 2;
         String actual = compoundInterestExService.getIsOveredYearMsg
-                (compoundInterestExService.getPriceList(2, 2.1, 2), 2);
+                (compoundInterestExService.getPriceList(principal, rate, year), targetPrice);
         assertThat(actual).isEqualTo("1年目に達成！！！");
     }
 
     @Test
     @DisplayName("目標金額に到達しなかった場合、年数は0年になる")
     void getOveredTargetPriceYear() {
+        int principal = 2;
+        double rate = 2.1;
+        int year = 2;
+        int targetPrice = 10;
         int actual = compoundInterestExService.getOveredTargetPriceYear
-                (compoundInterestExService.getPriceList(2, 2.1, 2), 10);
+                (compoundInterestExService.getPriceList(principal, rate, year), targetPrice);
         assertThat(actual).isEqualTo(0);
     }
 
     @Test
     @DisplayName("目標金額に到達した場合、年数は1年になる")
     void getOveredTargetPriceYear1() {
+        int principal = 2;
+        double rate = 2.1;
+        int year = 2;
+        int targetPrice = 2;
         int actual = compoundInterestExService.getOveredTargetPriceYear
-                (compoundInterestExService.getPriceList(2, 2.1, 2), 2);
+                (compoundInterestExService.getPriceList(principal, rate, year), targetPrice);
         assertThat(actual).isEqualTo(1);
     }
 }
