@@ -73,28 +73,36 @@ class CalculatorServiceTest {
     @Test
     @DisplayName("addを使用した場合、足し算されて値が200.0になる")
     void calculate() {
-        double actual = calculatorService.calculate("add", 150.0, 100);
+        double firstNum = 150.0;
+        double secondNum = 100;
+        double actual = calculatorService.calculate("add", firstNum, secondNum);
         assertThat(actual).isEqualTo(250.0);
     }
 
     @Test
     @DisplayName("subを使用した場合、引き算されて値が1.0になる")
     void calculate1() {
-        double actual = calculatorService.calculate("sub", 11.5, 1.5);
+        double firstNum = 11.5;
+        double secondNum = 1.5;
+        double actual = calculatorService.calculate("sub", firstNum, secondNum);
         assertThat(actual).isEqualTo(10.0);
     }
 
     @Test
     @DisplayName("mulを使用した場合、掛け算されて値が236.43になる")
     void calculate2() {
-        double actual = calculatorService.calculate("mul", 23.3, 16.2);
+        double firstNum = 23.3;
+        double secondNum = 16.2;
+        double actual = calculatorService.calculate("mul", firstNum, secondNum);
         assertThat(actual).isEqualTo(377.46);
     }
 
     @Test
     @DisplayName("divを使用した場合、割り算されて値が2.0540540540540544になる")
     void calculate3() {
-        double actual = calculatorService.calculate("div", 45.6, 22.2);
+        double firstNum = 45.6;
+        double secondNum = 22.2;
+        double actual = calculatorService.calculate("div", firstNum, secondNum);
         assertThat(actual).isEqualTo(2.0540540540540544);
     }
 
