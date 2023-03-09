@@ -8,12 +8,19 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
 import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyList;
 import org.mockito.MockedConstruction;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mockConstruction;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import org.mockito.Spy;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+@ExtendWith(MockitoExtension.class)
 class NumeronServiceTest {
 
     @Spy
@@ -33,7 +40,9 @@ class NumeronServiceTest {
     @Test
     @DisplayName("答えの数列と入力値が一致する場合、成功する")
     void getAttackResult() {
-        List<Integer> expected = Arrays.asList(3, 0);
+        doReturn(3).when(numeronService).getHitCount(anyList(),anyList());
+        doReturn(1).when(numeronService).getBlowCount(anyList(),anyList());
+        List<Integer> expected = Arrays.asList(3, 3);
         List<Integer> answerList = Arrays.asList(0, 1, 2);
         String attackNumber = "012";
         List<Integer> actual = numeronService.getAttackResult(answerList, attackNumber);
