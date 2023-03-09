@@ -143,7 +143,7 @@ class NumeronServiceTest {
     }
 
     @Test
-    @DisplayName("ターン数が１４以上の場合、？？？のコメントを取得する")
+    @DisplayName("ターン数が14以上の場合、？？？のコメントを取得する")
     void getRank5() {
         List<String> expected = Arrays.asList("？？？", "ちんぱんじぃ");
         List<String> actual = numeronService.getRank(16);
