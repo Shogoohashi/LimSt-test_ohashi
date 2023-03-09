@@ -51,7 +51,7 @@ class NumeronServiceTest {
 
 
     @Nested
-    @DisplayName("答えの数列と入力数列が数値のみ一致しない場合、カウントする。")
+    @DisplayName("答えの数列と入力数列が数値のみ一致する場合、判定後に結果を格納する。")
     class GetBlowCount {
         @Test
         void case1() {
