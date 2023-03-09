@@ -38,7 +38,7 @@ class NumeronServiceTest {
     }
 
     @Test
-    @DisplayName("答えの数列と入力値が一致する場合、成功する")
+    @DisplayName("数値と場所があっている又は、数値のみがあっていると結果を格納する")
     void getAttackResult() {
         doReturn(3).when(numeronService).getHitCount(anyList(),anyList());
         doReturn(1).when(numeronService).getBlowCount(anyList(),anyList());
