@@ -72,7 +72,7 @@ class NumeronServiceTest {
     }
 
     @Test
-    @DisplayName("getTurnが呼び出される度にturnが増加すること")
+    @DisplayName("getTurnが呼び出される度にturnが1足される")
     void addturn() {
         int expected = 1;
         int beforeTurn = numeronService.getTurn();
