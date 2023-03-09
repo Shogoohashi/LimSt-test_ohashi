@@ -84,7 +84,7 @@ class NumeronServiceTest {
     }
 
     @Test
-    @DisplayName("答えの数列を受けとれた場合、答えの数列を返却する")
+    @DisplayName("フィールド変数で宣言したanswerListの値を答えの数列を返却する")
     void getAnswerList() {
         try (MockedConstruction<Random> ignored = mockConstruction(Random.class,
                 (mock, ctx) -> doReturn(0).when(mock).nextInt(anyInt()))) {
