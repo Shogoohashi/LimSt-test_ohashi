@@ -1,6 +1,5 @@
 package com.example.demo.week10.service;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -9,14 +8,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyList;
 import org.mockito.MockedConstruction;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mockConstruction;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -40,8 +36,8 @@ class NumeronServiceTest {
     @Test
     @DisplayName("数値と場所があっている又は、数値のみがあっていると結果を格納する")
     void getAttackResult() {
-        doReturn(3).when(numeronService).getHitCount(anyList(),anyList());
-        doReturn(1).when(numeronService).getBlowCount(anyList(),anyList());
+        doReturn(3).when(numeronService).getHitCount(anyList(), anyList());
+        doReturn(1).when(numeronService).getBlowCount(anyList(), anyList());
         List<Integer> expected = Arrays.asList(3, 3);
         List<Integer> answerList = Arrays.asList(0, 1, 2);
         String attackNumber = "012";
@@ -61,6 +57,7 @@ class NumeronServiceTest {
             int actual = numeronService.getBlowCount(answer, attack);
             assertThat(actual).isEqualTo(expected);
         }
+
         @Test
         void case2() {
             int expected = 1;
