@@ -95,7 +95,7 @@ class NumeronServiceTest {
     }
 
     @Test
-    @DisplayName("ターン数を受け取れた場合、ターンを返却する")
+    @DisplayName("フィールド変数で宣言したturnの値をターン数で返却する")
     void getTurn() {
         int expected = 0;
         int actual = numeronService.getTurn();
