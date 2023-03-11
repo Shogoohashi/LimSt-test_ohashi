@@ -6,6 +6,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import static org.mockito.ArgumentMatchers.anyDouble;
+import static org.mockito.Mockito.doReturn;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -73,6 +75,7 @@ class CalculatorServiceTest {
     @Test
     @DisplayName("addを使用した場合、足し算されて値が200.0になる")
     void calculate() {
+        doReturn(250.0).when(calculatorService).add(anyDouble(), anyDouble());
         double firstNum = 150.0;
         double secondNum = 100;
         double actual = calculatorService.calculate("add", firstNum, secondNum);
@@ -82,6 +85,7 @@ class CalculatorServiceTest {
     @Test
     @DisplayName("subを使用した場合、引き算されて値が1.0になる")
     void calculate1() {
+        doReturn(10.0).when(calculatorService).sub(anyDouble(), anyDouble());
         double firstNum = 11.5;
         double secondNum = 1.5;
         double actual = calculatorService.calculate("sub", firstNum, secondNum);
@@ -91,6 +95,7 @@ class CalculatorServiceTest {
     @Test
     @DisplayName("mulを使用した場合、掛け算されて値が236.43になる")
     void calculate2() {
+        doReturn(377.46).when(calculatorService).mul(anyDouble(), anyDouble());
         double firstNum = 23.3;
         double secondNum = 16.2;
         double actual = calculatorService.calculate("mul", firstNum, secondNum);
@@ -100,6 +105,7 @@ class CalculatorServiceTest {
     @Test
     @DisplayName("divを使用した場合、割り算されて値が2.0540540540540544になる")
     void calculate3() {
+        doReturn(2.0540540540540544).when(calculatorService).div(anyDouble(), anyDouble());
         double firstNum = 45.6;
         double secondNum = 22.2;
         double actual = calculatorService.calculate("div", firstNum, secondNum);
