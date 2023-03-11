@@ -1,13 +1,22 @@
 package com.example.demo.week7.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyList;
+import static org.mockito.Mockito.doReturn;
+import org.mockito.Spy;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+@ExtendWith(MockitoExtension.class)
 class CompoundInterestExServiceTest {
 
+    @Spy
     CompoundInterestExService compoundInterestExService = new CompoundInterestExService();
 
     @Test
@@ -30,48 +39,38 @@ class CompoundInterestExServiceTest {
     @Test
     @DisplayName("目標金額に達成できなかった場合、目標金額には及ばず・・・を取得する")
     void getIsOveredYearMsg() {
-        int principal = 2;
-        double rate = 2.1;
-        int year = 10;
+        doReturn(0).when(compoundInterestExService).getOveredTargetPriceYear(anyList(), anyInt());
+        List<Double> List = Arrays.asList(2.0, 3.1, 10.0);
         int targetPrice = 10;
-        String actual = compoundInterestExService.getIsOveredYearMsg
-                (compoundInterestExService.getPriceList(principal, rate, year), targetPrice);
+        String actual = compoundInterestExService.getIsOveredYearMsg(List, targetPrice);
         assertThat(actual).isEqualTo("目標金額には及ばず・・・");
     }
 
     @Test
     @DisplayName("目標金額に達成できた場合、1年目に達成！！！を取得する")
     void getIsOveredYearMsg1() {
-        int principal = 2;
-        double rate = 2.1;
-        int year = 2;
+        doReturn(2).when(compoundInterestExService).getOveredTargetPriceYear(anyList(), anyInt());
+        List<Double> List = Arrays.asList(2.0, 3.1, 10.0);
         int targetPrice = 2;
-        String actual = compoundInterestExService.getIsOveredYearMsg
-                (compoundInterestExService.getPriceList(principal, rate, year), targetPrice);
-        assertThat(actual).isEqualTo("1年目に達成！！！");
+        String actual = compoundInterestExService.getIsOveredYearMsg(List, targetPrice);
+        assertThat(actual).isEqualTo("2年目に達成！！！");
     }
 
     @Test
     @DisplayName("目標金額に到達しなかった場合、年数は0年になる")
     void getOveredTargetPriceYear() {
-        int principal = 2;
-        double rate = 2.1;
-        int year = 2;
+        List<Double> List = Arrays.asList(2.0, 2.1, 2.0);
         int targetPrice = 10;
-        int actual = compoundInterestExService.getOveredTargetPriceYear
-                (compoundInterestExService.getPriceList(principal, rate, year), targetPrice);
+        int actual = compoundInterestExService.getOveredTargetPriceYear(List, targetPrice);
         assertThat(actual).isEqualTo(0);
     }
 
     @Test
     @DisplayName("目標金額に到達した場合、年数は1年になる")
     void getOveredTargetPriceYear1() {
-        int principal = 2;
-        double rate = 2.1;
-        int year = 2;
+        List<Double> List = Arrays.asList(2.0, 2.1, 2.0);
         int targetPrice = 2;
-        int actual = compoundInterestExService.getOveredTargetPriceYear
-                (compoundInterestExService.getPriceList(principal, rate, year), targetPrice);
+        int actual = compoundInterestExService.getOveredTargetPriceYear(List, targetPrice);
         assertThat(actual).isEqualTo(1);
     }
 }
