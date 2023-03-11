@@ -34,7 +34,7 @@ class NumeronServiceTest {
     }
 
     @Test
-    @DisplayName("数値と場所があっている又は、数値のみがあっていると結果を格納する")
+    @DisplayName("getHitCountの戻り値とgetBlowCountの戻り値を格納したListを返す。")
     void getAttackResult() {
         doReturn(3).when(numeronService).getHitCount(anyList(), anyList());
         doReturn(1).when(numeronService).getBlowCount(anyList(), anyList());
@@ -47,7 +47,7 @@ class NumeronServiceTest {
 
 
     @Nested
-    @DisplayName("答えの数列と入力数列が数値のみ一致する場合、判定後に結果を格納する。")
+    @DisplayName("answerlistの数値とattackListの数値が合っている数値をカウントする")
     class GetBlowCount {
         @Test
         void case1() {
